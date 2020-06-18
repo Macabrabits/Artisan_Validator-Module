@@ -1,25 +1,23 @@
-import { Validation } from "./Validation";
-
-const validations = require("./validations");
+import { Rule } from "./Rule";
 
 class Validator {
-  rules: { rule: string; msg?: string; code?: string; obj: Object }[];
+  rules: { rule: Rule; msg?: string; code?: string; }[];
 
   constructor(
-    rules: { rule: string; msg?: string; code?: string; obj: Object }[]
+    rules: { rule: Rule; msg?: string; code?: string; }[]
   ) {
     this.rules = rules;
   }
 
   validate(): any {
     this.rules.map((f) => {
-      const validation: Validation = validations[f.rule];
+      const rule: Rule = f.rule;
 
-      if (!validation.rule(f.obj)) console.log("ok");
-      else {
+      if (rule.passed) console.log("ok");
+      else {        
         console.log({
-          code: f.code || validation.code,
-          msg: f.msg || validation.msg(f.obj),
+          code: f.code || rule.code,
+          msg: f.msg || rule.msg,
         });
       }
     });

@@ -1,15 +1,14 @@
 import { Validator } from "./Validator";
+import rules from "./rules";
 
-const text = "fafa";
-const text2 = "fa";
-const number = 3;
-const number2 = 1;
 const vldt = new Validator([
-  { rule: "greaterThan2", obj: { text }, code: "FOO" },
-  { rule: "greaterThan2", obj: { text }, msg : 'text is too large' },
-  { rule: "greaterThan2", obj: { text2 } },
-  { rule: "greaterThan2", obj: { number } },
-  { rule: "greaterThan2", obj: { number2 } },
-]);
+    { rule: rules.greaterThan2("fafa"), code: "FOO" },
+    { rule: rules.greaterThan2("fa"), code: "FOO" },
+    { rule: rules.greaterThan2("fa")},
+    { rule: rules.greaterThan2(3), msg: 'campo inferior ou igual a 2'},
+    { rule: rules.greaterThan2(1), msg: 'campo inferior ou igual a 2'},
+    
+    
+  ]);
 
 vldt.validate();
