@@ -1,4 +1,5 @@
 import { Rule } from "./Rule";
+import rules from "./rules";
 
 class Validator {
   rules: { rule: Rule; msg?: string; code?: string; }[];
@@ -23,4 +24,6 @@ class Validator {
     });
   }
 }
+
 export { Validator };
+export { rules };
