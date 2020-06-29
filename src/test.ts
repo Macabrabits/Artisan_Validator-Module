@@ -3,6 +3,7 @@ import { Validator, rules } from "./Validator";
 const name = 'Victor Hugo'
 
 const vldt = new Validator([
+  
   { rule: rules.greaterThan("fafa", 3), code: "FOO" },
   { rule: rules.greaterThan("fa", 3), code: "FOO" },
   { rule: rules.greaterThan("fa", 2) },
@@ -15,7 +16,7 @@ const vldt = new Validator([
   { rule: rules.smallerThan("abc", 3), msg: "campo inferior ou igual a 3" },
   { rule: rules.smallerThan(1, 2), msg: "campo inferior ou igual a 2" },
 
-  { rule: rules.min("fafa", 5)},
+  { rule: rules.min("fafa", 5), msg: 'personal msg'},
   { rule: rules.min({name}, 12)},
   { rule: rules.min(4, 5)},
   { rule: rules.min({myArray: ['4']}, 2)},

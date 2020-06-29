@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --respawn --ignore-watch node_modules src/test.ts",
-    "start2": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules src/test.ts"
+    "start2": "ts-node-dev --respawn --ignore-watch node_modules src/test.ts",
+    "start": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules src/test.ts"
   },
   "keywords": [],
   "author": "",

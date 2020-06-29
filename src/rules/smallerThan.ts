@@ -9,9 +9,9 @@ const ruleFactory: (subject: any, max: number) => Rule = (subject, max) => {
 
   const result: boolean = strategy[typeof subject];
 
-  const msg = result ? undefined : `Field must be smaller than ${max}`;
+  const msg = (max:number):string => `Field must be smaller than ${max}`;
 
-  return new Rule(result, "st", msg);
+  return new Rule(result, "st", msg, max);
 };
 
 export = ruleFactory;

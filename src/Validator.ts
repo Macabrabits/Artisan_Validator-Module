@@ -12,13 +12,13 @@ class Validator {
 
   validate(): any {
     this.rules.map((f) => {
-      const rule: Rule = f.rule;
+      const rule: Rule = f.rule;         
 
       if (rule.passed) console.log("ok");
       else {        
         console.log({
           code: f.code || rule.code,
-          msg: f.msg || rule.msg,
+          msg: f.msg || (rule.msgFunction(rule.msgData) || 'No message'),
         });
       }
     });

@@ -1,6 +1,6 @@
 import { Rule } from "../Rule";
 
-const msgStrategy = (type:string, max: number, name?:string) => {  
+const msgFunction = ({type, max, name}:any) => {  
   const msgStrategy:any = {
     string: `${name || 'text'} must have at maximun ${max} characters`,
     number: `${name || 'number'} must be at maximun ${max}`,
@@ -20,8 +20,6 @@ const ruleFactory: (subject: any, max: number) => Rule = (subject, max) => {
     subject = subject[name]
     type = Array.isArray(subject) ? 'array' : typeof subject
   }
-    
-   
 
   const validationStrategy: any = {
     string: subject.length <= max,
@@ -29,14 +27,9 @@ const ruleFactory: (subject: any, max: number) => Rule = (subject, max) => {
     array: subject.length <= max,
   };
 
-  
-  
-
   const result: boolean = validationStrategy[type];  
 
-  const msg = result ? undefined : msgStrategy(type, max, name);
-
-  return new Rule(result, "max", msg);
+  return new Rule(result, "max", msgFunction, {type, max, name} );
 };
 
 export = ruleFactory;

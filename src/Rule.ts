@@ -1,21 +1,21 @@
 class Rule {
   passed:boolean;
   code?: string;
-  msg?:string = "No message";
+  msgFunction:(...args: any[]) => string;
+  msgData?:any;
   
 
   constructor(
     passed:boolean,
     code: string = "",
-    msg: string = "No message",    
-  ) {
-    this.code = code;
-    this.msg = msg;
+    msgFunction: (...args: any[]) => string,    
+    msgData?:any    
+  ) {        
     this.passed = passed;
+    this.code = code;
+    this.msgFunction = msgFunction;
+    this.msgData = msgData
   }
 }
 
-// const ruleFactory:(...args: any[]) => {code:string, msg:string, passed:boolean} = () => {
-//   return {code: 'fafa', msg: 'fafa', passed: true}
-// } 
 export { Rule };
