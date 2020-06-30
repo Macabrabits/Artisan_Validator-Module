@@ -1,6 +1,6 @@
 class Rule {
   passed:boolean;
-  code?: string;
+  code: string;
   msgFunction:(...args: any[]) => string;
   msgData?:any;
   
